@@ -19,12 +19,12 @@ function minRotateArr(arr) {
 	while (low < high) {
 		const mid = (low + high) >> 1;
 		if (arr[mid] > arr[high]) {
+			//最小值在右边，且不包括mid
 			low = mid + 1;
 		} else {
+			//最小值在左边，包括mid
 			high = mid;
 		}
 	}
 	return arr[low];
 }
-
-console.log(minRotateArr([4, 5, 6, 7, 8, 9, 0, 1, 2, 3]));
