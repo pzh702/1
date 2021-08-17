@@ -1,30 +1,23 @@
-function minRotateArr(arr) {
-	//旋转数组最小
-	let low = 0,
-		high = arr.length - 1;
-	// while (low < high) {
-	// 	const mid = (low + high) >> 1;
-	// 	if (arr[mid] > arr[low] && arr[mid] < arr[high]) {
-	// 		return arr[low];
-	// 	}
-	// 	if (arr[mid] > arr[low]) {
-	// 		low = mid;
-	// 	} else if (arr[mid] < arr[high]) {
-	// 		high = mid;
-	// 	} else {
-	// 		break;
-	// 	}
-	// }
-	// return arr[high];
-	while (low < high) {
-		const mid = (low + high) >> 1;
-		if (arr[mid] > arr[high]) {
-			low = mid + 1;
+function mergeArr(arr1, arr2) {
+	//合并有序数组
+	let res = [];
+	while (arr1.length && arr2.length) {
+		if (arr1[0] < arr2[0]) {
+			res.push(arr1.shift());
 		} else {
-			high = mid;
+			res.push(arr2.shift());
 		}
 	}
-	return arr[low];
+	return res.concat(arr1).concat(arr2);
 }
 
-console.log(minRotateArr([4, 5, 6, 7, 8, 9, 0, 1, 2, 3]));
+function mergeSort(arr) {
+	//归并排序
+	if (arr.length <= 1) {
+		return arr;
+	}
+	let mid = arr.length >> 1;
+	let left = arr.slice(0, mid);
+	let right = arr;
+	return mergeArr(mergeSort(left), mergeSort(right));
+}
