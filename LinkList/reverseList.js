@@ -8,18 +8,16 @@ function reverseList(head) {
 	// head.next = null;
 
 	// return list;
-	if (!pHead) {
+	if (!head) {
 		return null;
 	}
-	let preNode = null,
-		curNode = pHead;
-	while (curNode) {
-		let flag = curNode.next;
-		curNode.next = preNode;
-		preNode = curNode;
-		curNode = flag;
-		if (!flag) {
-			return flag;
-		}
+	let pre = null,
+		cur = head;
+	while (cur) {
+		let next = cur.next;
+		cur.next = pre;
+		pre = cur;
+		cur = next;
 	}
+	return pre;
 }

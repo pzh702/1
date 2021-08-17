@@ -6,7 +6,7 @@ function findEntryNodeOfLoop(pHead) {
 	let slow = pHead,
 		quick = pHead;
 	count = 1;
-	while (quick.next.next) {
+	while (quick.next.next && slow.next) {
 		slow = slow.next;
 		quick = quick.next.next;
 		if (slow === quick) {
