@@ -35,5 +35,5 @@ var quickSort = function (arr, left, right) {
 };
 
 let arr = [6, 7, 4, 5, 0, 2, 6, 3, 1, 9, 5];
-let a = quickSort(arr, 0, arr, length - 1);
+let a = quickSort(arr, 0, arr.length - 1);
 console.log(a);
