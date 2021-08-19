@@ -3,18 +3,22 @@
     this.next = null;
 }*/
 function reverseList(pHead) {
-	if (!pHead) {
-		return null;
+	// let preNode = null,
+	// 	curNode = pHead;
+	// while (curNode) {
+	// 	let flag = curNode.next;
+	// 	curNode.next = preNode;
+	// 	preNode = curNode;
+	// 	curNode = flag;
+	// }
+	// return preNode;
+	//递归
+	if (!pHead || !pHead.next) {
+		return pHead;
 	}
-	let preNode = null,
-		curNode = pHead;
-	while (curNode) {
-		let flag = curNode.next;
-		curNode.next = preNode;
-		preNode = curNode;
-		curNode = flag;
-		if (!flag) {
-			return flag;
-		}
-	}
+	let node = reverseList(pHead.next);
+	pHead.next.next = pHead;
+	pHead.next = null;
+
+	return node;
 }

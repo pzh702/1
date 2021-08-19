@@ -9,16 +9,13 @@ function findKthToTail(head, k) {
 	}
 	let slow = head,
 		quick = head;
-	for (let i = 0; i < k - 1; i++) {
-		if (quick.next) {
-			quick = quick.next;
-		} else {
-			return null;
-		}
-	}
+	flag = 0;
 	while (quick.next) {
 		quick = quick.next;
-		slow = slow.next;
+		flag++;
+		if (flag >= k) {
+			slow = slow.next;
+		}
 	}
 	return slow;
 }
