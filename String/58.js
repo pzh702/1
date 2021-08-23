@@ -1,24 +1,25 @@
-int lengthOfLastWord(string s)
-{
-    if (s.empty()) 
-        return 0;
-    s += " ";
-    string temp = "";
-    vector<string> res;
-    for (char ch : s)
-    {
-        if (ch == ' ')
-        {
-            if (!temp.empty()) //要不要判断非空取决于给定的字符串有没有前置或者后置的空格
-            {
-                res.push_back(temp);
-                temp.clear();
-            }
-        }
-        else
-            temp += ch;
-    }
-    if (res.empty())
-        return 0;
-    return res.back().size();
+function lengthOfLastWord(s) {
+	// if (s.length === 0) {
+	// 	return 0;
+	// }
+	s += " ";
+	let res = [],
+		flag = "";
+	for (const char of s) {
+		if (char === " ") {
+			if (flag !== "") {
+				res.push(flag);
+				flag = "";
+			}
+		} else {
+			flag += char;
+		}
+	}
+	if (res.length === 0) {
+		return 0;
+	}
+	return res.pop().length;
 }
+
+let a = lengthOfLastWord(" adf ");
+console.log(a);
