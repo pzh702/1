@@ -13,7 +13,11 @@ function reverseBetween(head, left, right) {
 	//重新拼接子链表
 	pre.next = right;
 	left.next = next;
+
+	return head;
 }
+
+//1,2,3,4,5,6=>1,4,3,2,5,6
 
 function reverseList(head) {
 	if (!head) {

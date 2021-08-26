@@ -1,7 +1,7 @@
 function rotateRight(head, k) {
 	let node1 = head,
 		node2 = head;
-	while (n--) {
+	while (k--) {
 		if (!node2.next) {
 			node2 = head;
 		}
