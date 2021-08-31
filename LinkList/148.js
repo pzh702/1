@@ -1,26 +1,33 @@
 function sortList(head) {
-	//o(n^2)
-	// let head_i = head
-	// while (head_i.next) {
-	//   let head_j=head_i.next
-	//   while (head_j) {
-	//     if (head_i.val>head_j.val) {
-	//       let flag = head_i.val
-	//       head_i.val = head_j.val
-	//       head_j.val = flag
-	//     }
-	//   }
+	//冒泡o(n^2)
+	// if (!head) {
+	// 	return null;
 	// }
-	// return head
+	// let i = head;
+	// while (i) {
+	// 	let j = i.next;
+	// 	while (j) {
+	// 		if (i.val > j.val) {
+	// 			let flag = i.val;
+	// 			i.val = j.val;
+	// 			j.val = flag;
+	// 		}
+	// 		j = j.next;
+	// 	}
+	// 	i = i.next;
+	// }
+	// return head;
 
-	//o(nlogn)
-	if (!head.next) {
+	//归并o(nlogn)
+	if (!head || !head.next) {
 		return head;
 	}
 	//找到中点
-	let slow = head,
-		quick = head;
-	while (quick.next.next && slow.next) {
+	let dummy = new ListNode(0);
+	dummy.next = head;
+	let slow = dummy,
+		quick = dummy;
+	while (quick && quick.next) {
 		quick = quick.next.next;
 		slow = slow.next;
 	}
@@ -29,6 +36,7 @@ function sortList(head) {
 	slow.next = null;
 	return mergeList(sortList(head), sortList(rightHead));
 }
+//1,2,3,4
 
 function mergeList(head1, head2) {
 	if (!head1) {
