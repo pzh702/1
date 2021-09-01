@@ -6,9 +6,9 @@ function mid(root, res) {
 	if (!root) {
 		return res;
 	}
-	mid(root.left);
-	res.push(root);
-	mid(root.right);
+	mid(root.left, res);
+	res.push(root.val);
+	mid(root.right, res);
 
 	return res;
 }

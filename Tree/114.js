@@ -1,16 +1,15 @@
 function flatten(root) {
 	if (!root) {
-		return null;
+		return;
 	}
-	let node1 = flatten(root.left);
-	let node2 = flatten(root.right);
-
+	flatten(root.left);
+	flatten(root.right);
+	let node1 = root.left;
+	let node2 = root.right;
 	root.left = null;
 	root.right = node1;
-	while (node1.right) {
-		node1 = node1.right;
+	while (root.right) {
+		root = root.right;
 	}
-	node1.right = node2;
-
-	return root;
+	root.right = node2;
 }
