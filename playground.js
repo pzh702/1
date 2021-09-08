@@ -1,14 +1,32 @@
-// let a = "i am a student";
-// let b = a + " " + " " + ".";
-// let c = a.split(" ").join(" " + " ");
-// let d = a.trim();
-// console.log(a, d);
-// console.log(a.length - a.trim().length);
-// console.log(b);
-// console.log(c);
-// console.log(14 % 3, parseInt(14 / 3));
-// console.log(/^[A-Z]$/i.test("d"));
-// console.log(a.slice(0, 3));
-// console.log(a);
+//1,2,3,4,5,6
+function reverse(head) {
+	if (!head || !head.next) {
+		return head;
+	}
+	// let next = head.next;
+	// next.next = head;
+	// head.next = null;
 
-let a = function (b) {};
+	// return reverse(next);
+
+	let node = reverse(head.next);
+	head.next.next = head;
+	head.next = null;
+
+	return node;
+}
+
+function reverseN(head, n) {
+	let back;
+	if (n === 1) {
+		back = head.next;
+		return head;
+	}
+	let node = reverseN(head.next, n - 1);
+	head.next.next = head;
+	head.next = back;
+
+	return node;
+}
+
+function reverseMN(head, m, n) {}
